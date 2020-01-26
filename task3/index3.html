@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>task3</title>
+  <style>
+    #text {
+      width: 40%;
+      height: 300px;
+      margin: 20px;
+      font-style: ;
+    }
+
+    #button1 {
+      width: 40%;
+      margin: 20px;
+    }
+
+    .r1 {
+      margin-left: 30px;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      var radios = document.getElementsByClassName('r1');
+      var textCont = document.getElementsByName('textToChange');
+      var button1 = document.getElementById("button1")
+
+      button1.onclick = function () {
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].checked) {
+            switch (radios[i].value) {
+              case "bold":
+                textCont[0].style.fontWeight = "bold";
+                break;
+              case "underline":
+                textCont[0].style.textDecoration = "underline";
+                break;
+              case "italics":
+                textCont[0].style.fontStyle = "italic";
+                break;
+              case "left":
+                textCont[0].style.textAlign = "left";
+                break;
+              case "right":
+                textCont[0].style.textAlign = "right";
+                break;
+              case "justify":
+                textCont[0].style.textAlign = "justify";
+                break;
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+<form id="form">
+  <input type="radio" class="r1" name="state1" id ="bold" value="bold"><label for="bold"> Bold </label>
+  <input type="radio" class="r1" name="state1" id ="underline" value="underline"><label for="underline"> Underline </label>
+  <input type="radio" class="r1" name="state1" id ="italics" value="italics"><label for="italics"> Italics </label>
+  <input type="radio" class="r1" name="state2" id ="left" value="left"><label for="left"> Left </label>
+  <input type="radio" class="r1" name="state2" id ="right" value="right"><label for="right"> Right </label>
+  <input type="radio" class="r1" name="state2" id ="justify" value="justify"><label for="justify"> Justify </label><br>
+  <input type="text" name="textToChange" placeholder="  Text" id="text"><br>
+  <input type="button" id="button1" name="submit" value="Show text" class="button">
+</form>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>task4</title>
+  <style>
+    .item {
+      width: 19%;
+      float: left;
+      margin: 1%;
+      border: 1px solid black;
+      border-radius: 10px;
+      padding: 5px;
+    }
+
+    img {
+      margin: 5%;
+      margin-left: 12%;
+    }
+
+    .button {
+      margin-left: 20%;
+      width: 50%;
+    }
+
+    .price {
+      text-align: right;
+    }
+
+    .order {
+      width: 30%;
+      float: right;
+      margin: 1%;
+      border: 1px solid black;
+      border-radius: 10px;
+      padding: 5px;
+    }
+
+    .orderInp {
+      float: right;
+      width: 60%;
+      margin: 2px;
+      border: 1px solid black;
+    }
+
+    .big {
+      height: 200px;
+    }
+
+    #buy {
+      clear: both;
+      width: 90%;
+      margin: 4%;
+    }
+
+    label {
+      margin: 2px;
+      display: inline-block;
+    }
+
+    .bookName {
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      var container = document.getElementById("container");
+      container.onclick = function (event) {
+        var target = event.target;
+        if (target.type === 'button') {
+          select(target);
+        }
+      };
+
+      function select(button) {
+        var form = button.parentElement;
+        form.name = "selected";
+        var bookName = document.forms["selected"].getElementsByClassName("bookName")[0];
+        var bName = document.getElementById("book");
+        bName.value = bookName.textContent;
+        var quantity = document.getElementsByClassName("quantity")[0];
+        quantity.value = "1";
+      }
+
+      var buy = document.getElementById("buy");
+      buy.onclick = function () {
+        var book = document.getElementById("book");
+        var name = document.getElementById("name");
+        var del = document.getElementById("del");
+        var delD = document.getElementById("delD");
+        var ch = buy.parentElement.children;
+        var isOk = true;
+        for (var i = 0; i < ch.length; i++) {
+          if (ch[i].tagName === "INPUT" && (ch[i].id !== "buy" && ch[i].id !== "comment") && ch[i].value === "") {
+            ch[i].style.border = "1px solid red";
+            isOk = false;
+          } else if (ch[i].tagName === "INPUT" && (ch[i].id !== "buy" && ch[i].id !== "comment")) {
+            ch[i].style.border = "1px solid black";
+          }
+        }
+        if (isOk === true) {
+          var message1 = name.value + ", thanks for the order! ";
+          var message2 = "Book \"" + book.value + "\" will be delivered on " + delD.value + " to " + del.value + ".";
+          alert(message1 + message2);
+        }
+      }
+
+    }
+  </script>
+</head>
+<body>
+<div id="container">
+  <form class="item">
+    <img src="images/1.png">
+    <div class="bookName">Learning Java EE</div>
+    <span class="author">Sebastian Dashner</span>
+    <div class="price">15$</div>
+    <input type="button" class="button" value="Select">
+  </form>
+  <form class="item">
+    <img src="images/2.png">
+    <div class="bookName">Java development for juniors</div>
+    <span class="author">Vasilev A.N</span>
+    <div class="price">20$</div>
+    <input type="button" class="button" value="Select">
+  </form>
+  <form class="item">
+    <img src="images/3.png">
+    <div class="bookName">Java for juniors</div>
+    <span class="author">Gerbert Shildt</span>
+    <div class="price">25$</div>
+    <input type="button" class="button" value="Select">
+  </form>
+</div>
+<form class="order">
+  <label for="book">Book: </label><input type="text" id="book" class="orderInp bookName"><br>
+  <label for="quantity">Quantity: </label><input type="text" id="quantity" class="orderInp quantity"><br>
+  <label for="name">Name: </label><input type="text" id="name" class="orderInp authorName"><br>
+  <label for="del">Delivery address: </label><input type="text" id="del" class="orderInp big delAddr"><br>
+  <label for="delD">Delivery date: </label><input type="text" id="delD" class="orderInp delDate"><br>
+  <label for="comment">Comment: </label><input type="text" id="comment" class="orderInp big comment"><br>
+  <input type="button" value="Buy" id="buy">
+</form>
+</body>
+</html>

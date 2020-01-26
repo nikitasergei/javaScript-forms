@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>task6</title>
+  <style>
+    * {
+      /*border: 1px solid red;*/
+    }
+
+    #container {
+      margin: 10px;
+    }
+
+    #firstDiv {
+      border-bottom: 1px solid black;
+      width: 650px;
+    }
+
+    label {
+      margin: 10px;
+    }
+
+    select {
+      width: 150px;
+      margin: 5px;
+      border-radius: 10px;
+    }
+
+    button {
+      width: 100px;
+      text-align: center;
+      border-radius: 2px;
+      margin: 10px;
+    }
+
+    #table {
+      margin: 20px;
+    }
+
+    #tableDiv {
+      margin: 10px;
+      border: 1px solid black;
+      border-radius: 3px;
+      width: 900px;
+    }
+
+    #bookButton {
+      padding-left: 550px;
+    }
+
+    #secondDiv {
+      display: none;
+    }
+
+
+    #historyTable {
+      margin: 10px;
+      display: none;
+      text-align: center;
+      border-collapse: collapse;
+
+    }
+
+  </style>
+  <script>
+    window.onload = function () {
+      var dateSelect = document.getElementById("dataSelect");
+      var table = document.getElementById("table");
+      var butt1 = document.getElementById("button");
+      var directionSelect = document.getElementById("directionSelect");
+      var chBoxArr = document.getElementsByTagName("input");
+      var price = document.getElementById("price");
+      var butt2 = document.getElementById("book");
+      var sh = document.getElementById("history");
+      var hTable = document.getElementById("historyTable");
+      for (var i = 0; i < 5; i++) {
+        var option = document.createElement('option');
+        var date = new Date();
+        var date1 = new Date(date.getFullYear(), date.getMonth(), date.getDate() + i);
+        option.innerText = date1.getDate() + "." + (date1.getMonth() + 1) + "." + date1.getFullYear();
+        dateSelect.appendChild(option);
+      }
+
+      function getFirstData() {
+        var secDiv = document.getElementById("secondDiv");
+        secDiv.style.display = "block";
+      }
+
+      butt1.addEventListener("click", getFirstData);
+
+      function getPrice() {
+        var sum = 0;
+        for (var i = 0; i < chBoxArr.length; i++) {
+          if (chBoxArr[i].checked)
+            sum = sum + 7;
+        }
+        price.innerText = "Total price: " + sum + " $";
+      }
+
+      table.addEventListener("click", getPrice);
+
+      butt2.onclick = function () {
+        for (var i = 0; i < chBoxArr.length; i++) {
+          if (chBoxArr[i].checked) {
+            var tr = document.createElement("tr");
+            var td = document.createElement("td");
+            td.innerText = directionSelect.value;
+            tr.appendChild(td);
+            var td1 = document.createElement("td");
+            td1.innerText = dateSelect.value;
+            tr.appendChild(td1);
+            var td2 = document.createElement("td");
+            td2.innerText = chBoxArr[i].value;
+            tr.appendChild(td2);
+            hTable.appendChild(tr);
+            td.style.border = "1px solid black";
+            td1.style.border = "1px solid black";
+            td2.style.border = "1px solid black";
+          }
+        }
+      };
+
+      sh.onclick = function showHistory() {
+        hTable.style.display = "block";
+      }
+
+    }
+  </script>
+</head>
+<body>
+<div id="container">
+  <div id="firstDiv">
+    <label>Direction: </label>
+    <select id="directionSelect">
+      <option>Grodno-Minsk</option>
+      <option>Minsk-Grodno</option>
+      <option>Grodno-Brest</option>
+    </select>
+    <label>Date: </label>
+    <select id="dataSelect">
+    </select>
+    <button id="button">Select</button>
+  </div>
+  <div id="secondDiv">
+    <div id="tableDiv">
+      <table id="table">
+        <tr>
+          <td><input type="checkbox" value="1"><label>1</label></td>
+          <td><input type="checkbox" value="3"><label>3</label></td>
+          <td><input type="checkbox" value="5"><label>5</label></td>
+          <td><input type="checkbox" value="7"><label>7</label></td>
+          <td><input type="checkbox" value="9"><label>9</label></td>
+          <td><input type="checkbox" value="11"><label>11</label></td>
+          <td><input type="checkbox" value="13"><label>13</label></td>
+          <td><input type="checkbox" value="15"><label>15</label></td>
+          <td><input type="checkbox" value="17"><label>17</label></td>
+          <td><input type="checkbox" value="19"><label>19</label></td>
+          <td><input type="checkbox" value="21"><label>21</label></td>
+          <td><input type="checkbox" value="23"><label>23</label></td>
+          <td><input type="checkbox" value="25"><label>25</label></td>
+          <td><input type="checkbox" value="27"><label>27</label></td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" value="2"><label>2</label></td>
+          <td><input type="checkbox" value="4"><label>4</label></td>
+          <td><input type="checkbox" value="6"><label>6</label></td>
+          <td><input type="checkbox" value="8"><label>8</label></td>
+          <td><input type="checkbox" value="10"><label>10</label></td>
+          <td><input type="checkbox" value="12"><label>12</label></td>
+          <td><input type="checkbox" value="14"><label>14</label></td>
+          <td><input type="checkbox" value="16"><label>16</label></td>
+          <td><input type="checkbox" value="18"><label>18</label></td>
+          <td><input type="checkbox" value="20"><label>20</label></td>
+          <td><input type="checkbox" value="22"><label>22</label></td>
+          <td><input type="checkbox" value="24"><label>24</label></td>
+          <td><input type="checkbox" value="26"><label>26</label></td>
+          <td><input type="checkbox" value="28"><label>28</label></td>
+        </tr>
+      </table>
+    </div>
+    <div id="bookButton">
+      <label id="price">Total price: </label>
+      <button id="book">Book</button>
+    </div>
+  </div>
+  <div id="showHistory">
+    <button id="history"> Show booking</button>
+    <table id="historyTable">
+      <tr>
+        <th>Direction</th>
+        <th>Date</th>
+        <th>Seat</th>
+      </tr>
+    </table>
+  </div>
+</div>
+</body>
+</html>

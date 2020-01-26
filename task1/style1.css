@@ -1,0 +1,42 @@
+* {
+    /*border: 1px solid red;*/
+}
+
+h1 {
+    text-align: center;
+}
+
+body {
+    background-color: #fcb06c;
+}
+
+#name {
+    width: 90%;
+    height: 30px;
+    float: right;
+
+}
+
+#message {
+    width: 90%;
+    height: 50px;
+    float: right;
+}
+
+#button {
+    width: 95%;
+    margin: 3%;
+    height: 40px;
+}
+
+.user-name {
+    border: 1px solid black;
+    margin: 10px;
+    margin-bottom: 0;
+}
+
+.user-mess {
+    border: 1px solid black;
+    margin: 10px;
+    margin-top: 0;
+}

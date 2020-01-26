@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>task2</title>
+  <style>
+    #result {
+      margin: 20px
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      var button1 = document.getElementById("button1");
+      var button2 = document.getElementById("button2");
+      var res = 0;
+      var result = document.getElementById("result");
+      button1.onclick = function () {
+        var radios = document.getElementsByClassName("r1");
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].checked && radios[i].value === "5") {
+            res++;
+            result.innerText = "Result: " + res + " correct answers to 2 questions"
+          }
+          button1.onclick = function () {
+            button1.value = "Done";
+          }
+        }
+      };
+
+      button2.onclick = function () {
+        var radios = document.getElementsByClassName("r2");
+        for (var i = 0; i < radios.length; i++) {
+          if (radios[i].checked && radios[i].value === "5") {
+            res++;
+            result.innerText = "Result: " + res + " correct answers to 2 questions"
+          }
+          button2.onclick = function () {
+            button2.value = "Done";
+          }
+        }
+
+      };
+
+
+    }
+  </script>
+</head>
+<body>
+<form id="question1">
+  <h4>How many letters are there in the word "Hello"?</h4>
+  <input type="radio" class="r1" name="state1" value="5"><label> 5 </label><br>
+  <input type="radio" class="r1" name="state1" value="2"><label> 2 </label><br>
+  <input type="button" name="submit1" id="button1" value="Next">
+</form>
+<form id="question2">
+  <h4>How many letters are there in the word "Hello"?</h4>
+  <input type="radio" class="r2" name="state2" value="4"><label> 4 </label><br>
+  <input type="radio" class="r2" name="state2" value="5"><label> 5 </label><br>
+  <input type="button" name="submit" id="button2" value="Next">
+</form>
+<div id="result">Result</div>
+</body>
+</html>
